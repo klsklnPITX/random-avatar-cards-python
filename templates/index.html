@@ -9,7 +9,7 @@
 <body>
     <h1 class="tc">Avatars</h1>
     <div class="tc">
-        <input class="pa3 ba b--green bg-lightest-blue" type="search" placeholder="Search Avatars">
+        <input class="pa3 ba b--green bg-lightest-blue" type="search" placeholder="Search Avatars" oninput="searchInput()" id="searchBox">
     </div>
     <div class="tc">
         {% for avatar in data_avatars["avatars"] %}
@@ -20,5 +20,7 @@
         </div>
         {% endfor %}
     </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
