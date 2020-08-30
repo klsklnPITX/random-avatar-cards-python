@@ -23,16 +23,16 @@
 
     <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script> -->
     <script>
-        const py_var = '{{ data_avatars["avatars"] | tojson}}';
-        function searchInput(py_var) {
-            console.log(py_var);
+        function searchInput() {
+            var py_var = '{{ data_avatars["avatars"] | tojson}}'
             var searchBoxInput = document.getElementById("searchBox").value;
             var avatars_obj = JSON.parse(py_var)
             const filteredAvatars = avatars_obj.filter(avatars_obj => {
                 return (avatars_obj.name.toLowerCase().includes(searchBoxInput.toLowerCase()))
-            });
+            });  
             console.log(filteredAvatars);
         }
+        searchInput()
     </script>
 </body>
 </html>
