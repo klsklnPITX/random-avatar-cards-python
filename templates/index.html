@@ -11,10 +11,14 @@
     <div class="tc">
         <input class="pa3 ba b--green bg-lightest-blue" type="search" placeholder="Search Avatars">
     </div>
-    <div class="tc bg-light-blue dib br3 pa3 ma2 grow bw2 shadow-5">
-        <img src="https://avatars.dicebear.com/api/avataaars/1.svg?mood[]=happy" alt="Avatar" width="200" height="200">
-        <h2>Hans Peter</h2>
-        <p>hans.peter@gmail.com</p>
+    <div class="tc">
+        {% for avatar in data_avatars["avatars"] %}
+        <div class="tc bg-light-blue dib br3 pa3 ma2 grow bw2 shadow-5">
+            <img src="https://avatars.dicebear.com/api/avataaars/{{avatar['id']}}.svg?mood[]=happy" alt="Avatar" width="200" height="200">
+            <h2>{{avatar["name"]}}</h2>
+            <p>{{avatar["email"]}}</p>
+        </div>
+        {% endfor %}
     </div>
 </body>
 </html>
