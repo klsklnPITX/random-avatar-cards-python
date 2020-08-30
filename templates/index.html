@@ -3,8 +3,18 @@
 <head>
     <title></title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/tachyons.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    <h1 class="tc">Avatars</h1>
+    <div class="tc">
+        <input class="pa3 ba b--green bg-lightest-blue" type="search" placeholder="Search Avatars">
+    </div>
+    <div class="tc bg-light-blue dib br3 pa3 ma2 grow bw2 shadow-5">
+        <img src="https://avatars.dicebear.com/api/avataaars/1.svg?mood[]=happy" alt="Avatar" width="200" height="200">
+        <h2>Hans Peter</h2>
+        <p>hans.peter@gmail.com</p>
+    </div>
 </body>
 </html>
