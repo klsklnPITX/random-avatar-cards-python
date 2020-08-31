@@ -13,7 +13,7 @@
     </div>
     <div class="tc">
         {% for avatar in data_avatars["avatars"] %}
-        <div class="tc bg-light-blue dib br3 pa3 ma2 grow bw2 shadow-5">
+        <div class="tc bg-light-blue dib br3 pa3 ma2 grow bw2 shadow-5 card">
             <img src="https://avatars.dicebear.com/api/avataaars/{{avatar['id']}}.svg?mood[]=happy" alt="Avatar" width="200" height="200">
             <h2>{{avatar["name"]}}</h2>
             <p>{{avatar["email"]}}</p>
@@ -24,13 +24,31 @@
     <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script> -->
     <script>
         function searchInput() {
-            var py_var = '{{ data_avatars["avatars"] | tojson}}'
+            var pyVar = '{{ data_avatars["avatars"] | tojson}}';
             var searchBoxInput = document.getElementById("searchBox").value;
-            var avatars_obj = JSON.parse(py_var)
-            const filteredAvatars = avatars_obj.filter(avatars_obj => {
-                return (avatars_obj.name.toLowerCase().includes(searchBoxInput.toLowerCase()))
+            var cardItems = document.getElementsByClassName("card");
+            
+            var avatarObj = JSON.parse(pyVar);
+            const filteredAvatars = avatarObj.filter(avatarObj => {
+                return (avatarObj.name.toLowerCase().includes(searchBoxInput.toLowerCase()));
             });  
             console.log(filteredAvatars);
+
+            for(i=0;i<cardItems.length; i++){
+                var currentCardName = cardItems[i].getElementsByTagName("h2")[0].innerHTML;
+                for(n=0; n<filteredAvatars.length; n++){
+                    if(filteredAvatars[n].name===currentCardName){
+                        cardItems[i].style.display = "";
+                        break;
+                    }
+                    else{
+                        cardItems[i].style.display = "none";
+                    }
+                }
+                if(filteredAvatars.length===0){
+                    cardItems[i].style.display = "none";
+                }
+            }
         }
         searchInput()
     </script>
